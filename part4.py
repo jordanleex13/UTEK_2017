@@ -131,16 +131,16 @@ def part4(startstr, endstr):
 
     return output
 
-def part4Tuple(startTuple, endTuple):
-    start_str = startTuple[0] + " " + startTuple[1]
-    end_str = endTuple[0] + " " + endTuple[1]
 
-    return part4(start_str,end_str)
 # Specs: can drive 480km @ full (80km/hr)
 # MINIMIZE dist_from_curr + dist_from_end @ each station
 
 
+def part4Tuple(startTuple, endTuple):
+    start_str = str(startTuple[0]) + " " + str(startTuple[1])
+    end_str = str(endTuple[0]) + " " + str(endTuple[1])
 
+    return part4(start_str,end_str)
 
-
-part4("37.773972 -122.431297", "40.7128 -74.0059")
+if __name__ == "__main__":
+    part4("37.773972 -122.431297", "40.7128 -74.0059")

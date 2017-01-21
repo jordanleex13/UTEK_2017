@@ -8,6 +8,7 @@
 
 .container{
     border-radius: 2em;
+    background-color:white;
 }
 
 .horizontally-center {
@@ -39,4 +40,8 @@ body{
 
 .margins {
     margin-bottom: 12px;
+}
+
+.center{
+    margin:0 auto;
 }

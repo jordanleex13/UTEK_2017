@@ -5,26 +5,32 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <div class="center">
         <h1 class="horizontally-center" style="font-family: Arial, Helvetica, sans-serif; color: white">UTEK 2017</h1>
         <br>
         <form class="horizontally-center" action="search" method="GET">
             <label for="start" class="white-text">Start</label>
             <br>
-            <input id="start" type="text" class="margins">
+            <input id="start" type="text" name="start" class="margins">
             <br>
             <label for="end" class="white-text">End</label>
             <br>
-            <input id="end" type="text" class="margins">
+            <input id="end" name="end" type="text" class="margins">
             <br>
             <input type="submit" value="Search" class="rounded; white-background">
         </form>
     </div>
-    <ol>
+    <ol class="container center">
         {% for path_name in path_names %}
-        <li>path_name</li>
+        <li>{{ path_name }}</li>
         {% else %}
         <em>Unbelievable.  No entries here so far</em>
         {% endfor %}
     </ol>
+    <iframe class="center"
+        width="800"
+        height="650"
+        frameborder="0" style="border:0"
+        src="{{embed_url}}" allowfullscreen>
+    </iframe>
 </body>
