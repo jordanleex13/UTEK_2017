@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
 </head>
 <body>
-    <div class="center-of-page container">
+    <div class="container">
         <h1 class="horizontally-center" style="font-family: Arial, Helvetica, sans-serif; color: white">UTEK 2017</h1>
         <br>
         <form class="horizontally-center" action="search" method="GET">
@@ -20,4 +20,11 @@
             <input type="submit" value="Search" class="rounded; white-background">
         </form>
     </div>
+    <ol>
+        {% for path_name in path_names %}
+        <li>path_name</li>
+        {% else %}
+        <em>Unbelievable.  No entries here so far</em>
+        {% endfor %}
+    </ol>
 </body>
