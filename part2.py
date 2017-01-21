@@ -2,7 +2,7 @@ import os
 import googlemaps
 from tinydb import TinyDB, Query #Only using this for cache storage
 
-GMAPS = googlemaps.Client(key=os.environ['UTEK_2017_API_KEY'])
+GMAPS = googlemaps.Client(key="AIzaSyBD9ncqo4K7G03DIF-TO-vaRBxq-FDzlyc")
 db = TinyDB('db.json')
 query = Query()
 
@@ -26,8 +26,8 @@ def check_cache(point1, point2):
     if db.search(query.p1 == point1) and db.search(query.p2 == point2):
         lst = []
         dct = db.search(query.p1 == p1)
-        lst.append(dct[distance])
-        lst.append(dct[time])
+        lst.append(dct["distance"])
+        lst.append(dct["time"])
 
         return lst
     else:
