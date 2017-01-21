@@ -26,8 +26,8 @@ def check_cache(point1, point2):
     if db.search(query.p1 == point1) and db.search(query.p2 == point2):
         lst = []
         dct = db.search(query.p1 == p1)
-        lst.append(dct[distance])
-        lst.append(dct[time])
+        lst.append(dct["distance"])
+        lst.append(dct["time"])
 
         return lst
     else:
