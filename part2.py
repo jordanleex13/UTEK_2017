@@ -2,7 +2,7 @@ import os
 import googlemaps
 from tinydb import TinyDB, Query
 
-GMAPS = googlemaps.Client(key=os.environ['UTEK_2017_API_KEY'])
+GMAPS = googlemaps.Client(key="AIzaSyBD9ncqo4K7G03DIF-TO-vaRBxq-FDzlyc")
 db = TinyDB('db.json')
 query = Query()
 
