@@ -116,7 +116,8 @@ def part4(startstr, endstr):
         for station in path:
             station.mPrint()
 
-        return path
+        return (path, time, dist)
+
     g = Graph()
     output = g.findPath(startPoint, endPoint)
 
@@ -127,6 +128,8 @@ def part4(startstr, endstr):
         station.mPrint()
         # time then distance
     print(str(output[1])+ " " + str(output[2]))
+
+    return output
 
 
 # Specs: can drive 480km @ full (80km/hr)
