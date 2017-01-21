@@ -87,5 +87,10 @@ def part1(coordinate):
     for station in min_stations:
         station.mPrint()
 
+<<<<<<< HEAD
+if __name__ == "__main__":
+    part1('38.8977 -77.0365')
+=======
+>>>>>>> 546f873cdea9774d0d8d32fe96e5111168090be2
 
 part1('38.8977 -77.0365')
