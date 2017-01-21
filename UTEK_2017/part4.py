@@ -145,7 +145,7 @@ def part4(startstr, endstr):
         path.append(Node(endPoint[0], endPoint[1], "End", 1))
         for station in path:
             station.mPrint()
-
+        print (str(time) + " " + str(dist))
         return (path, time, dist)
 
     # Create the graph and find the path
