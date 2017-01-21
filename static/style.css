@@ -1,0 +1,42 @@
+.center-of-page {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.container{
+    border-radius: 2em;
+}
+
+.horizontally-center {
+    width: 50%;
+    margin: 0 auto; 
+    
+}
+
+.white-text{
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+
+.rounded{
+    border-radius: 5px;
+}
+
+body{
+    background-color: #1E88E5;
+
+}
+
+.white-background{
+    background-color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1E88E5;
+}
+
+.margins {
+    margin-bottom: 12px;
+}
