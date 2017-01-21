@@ -2,7 +2,7 @@ import os
 import googlemaps
 
 # Google Maps API
-GMAPS = googlemaps.Client(key="AIzaSyBD9ncqo4K7G03DIF-TO-vaRBxq-FDzlyc")
+GMAPS = googlemaps.Client(key="AIzaSyDTmrZ94vmGz881d2uL3tU73V5w6-jhpRk")
 
 """
 Takes two points and calculates the distance between the two and the time to get there
