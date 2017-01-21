@@ -158,7 +158,7 @@ def part4(startstr, endstr):
     for station in path:
         station.mPrint()
         # time then distance
-<<<<<<< HEAD
+#<<<<<<< HEAD
     print(str(output[1])+ " " + str(output[2]))
 
     return output
@@ -173,9 +173,4 @@ def part4Tuple(startTuple, endTuple):
 
 
 
-=======
-    print(str(output[1]) + " " + str(output[2]))
->>>>>>> 546f873cdea9774d0d8d32fe96e5111168090be2
-
-
-part4("37.773972 -122.431297", "40.7128 -74.0059")
+part4("37.8 -122.5", "41.7128 -76.0059")

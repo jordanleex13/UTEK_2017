@@ -14,17 +14,15 @@ distance -- the distance in kilometers
 duration -- the time in hours
 """
 def get_distance_and_time(point1, point2):
-<<<<<<< HEAD
+
     distance_matrix = GMAPS.distance_matrix(point1,point2)
-=======
-    distance_matrix = GMAPS.distance_matrix(point1, point2)
->>>>>>> 546f873cdea9774d0d8d32fe96e5111168090be2
+
     element = distance_matrix["rows"][0]["elements"][0]
     distance = element["distance"]["value"]
     duration = element["duration"]["value"]
     return distance/1000,duration/(60*60)
 
 if __name__ == "__main__":
-    point1 = (37.773972, -122.431297)
+    point1 = (37.771242, -122.431297)
     point2 = (37.4931367, -121.9453883)
     print(get_distance_and_time(point1, point2))
