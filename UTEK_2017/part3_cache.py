@@ -17,6 +17,7 @@ def get_distance_and_time(point1, point2):
 
     else:
         #if new points, calculate distance and time and put it in the cache
+        print("Using API CALL")
         distance_matrix = GMAPS.distance_matrix(point1,point2)
         element = distance_matrix["rows"][0]["elements"][0]
         distance = element["distance"]["value"]
