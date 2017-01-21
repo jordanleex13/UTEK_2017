@@ -1,6 +1,6 @@
 import os
 import googlemaps
-from tinydb import TinyDB, Query
+from tinydb import TinyDB, Query #Only using this for cache storage
 
 GMAPS = googlemaps.Client(key=os.environ['UTEK_2017_API_KEY'])
 db = TinyDB('db.json')
@@ -33,3 +33,6 @@ def check_cache(point1, point2):
     else:
         distance, duration = get_distance_and_time(point1, point2)
         db.insert({'p1': point1, 'p2': point2, 'distance': distance, 'time': duration})
+
+
+print (check_cache(point1, point2))
