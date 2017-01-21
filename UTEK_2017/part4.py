@@ -106,7 +106,7 @@ class Graph:
 
             dist += currDist
             time += currTime
-            time += currDist / 480 * 20 /60.0
+            time += currDist / 480 * 20 / 60.0
 
 
             currNode = candidates[ind]
