@@ -22,7 +22,17 @@ def get_distance_and_time(point1, point2):
     duration = element["duration"]["value"]
     return distance/1000,duration/(60*60)
 
-if __name__ == "__main__":
-    point1 = (37.771242, -122.431297)
-    point2 = (37.4931367, -121.9453883)
-    print(get_distance_and_time(point1, point2))
+# if __name__ == "__main__":
+#     point1 = (37.771242, -122.431297)
+#     point2 = (37.4931367, -121.9453883)
+#     print(get_distance_and_time(point1, point2))
+#
+# str1 = input("Enter start coordinate: ")
+# str2 = input("Enter end coordinate: ")
+# start_lat, start_lon = map(float, str1.split(' '))
+# end_lat, end_lon = map(float, str2.split(' '))
+#
+# point1 = (start_lat, start_lon)
+# point2 = (end_lat, end_lon)
+#
+# print(get_distance_and_time(point1, point2))

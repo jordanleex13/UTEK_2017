@@ -18,16 +18,17 @@ def search():
     end_location = geolocator.geocode(end_str)
     start_tuple = (start_location.latitude, start_location.longitude)
     end_tuple = (end_location.latitude, end_location.longitude)
-    path = part4Tuple(start_tuple, end_tuple)
-    
-    name_of_path_points = [start_location.address] 
+    path, dist, time = part4Tuple(start_tuple, end_tuple)
+
+    name_of_path_points = [start_location.address]
     params = [('origin',start_location.address),('destination',end_location.address),('waypoints',)]
-    for index,node in enumerate(path[0][1:]):
-        if index < len(path) - 1:
+    for index,node in enumerate(path[1:]):
+        if index < len(path) - 2:
             name_of_path_points.append(node.name)
     name_of_path_points.append(end_location.address)
 
     params = {}
+    print(name_of_path_points)
     params['origin'] = start_location.address
     params['destination'] = end_location.address
     params['waypoints'] = '|'.join(name_of_path_points[1:len(name_of_path_points)-1])

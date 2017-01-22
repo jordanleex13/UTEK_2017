@@ -32,7 +32,7 @@ class Station:
     """ Prints the station according to competition specifications"""
     def mPrint(self):
         mString = str(self.latitude) + " " + str(self.longitude) + " " + self.name + " " + str(self.distance)
-        print mString
+        print (mString)
 
 
 """
@@ -48,9 +48,8 @@ def part1(coordinate):
     given_lat, given_lng = map(float, coordinate.split(' '))
 
     # Make the request and get the JSON
-    url = "https://gist.githubusercontent.com/c2huc2hu/4164f3893e2c46c978a3159d307905ba/raw/a1eec746ee4c4c0bc1d3dc66fc4c6c07c3b81b7a/charging_stations.json"
-    response = urllib.urlopen(url)
-    data = json.loads(response.read())
+    # JSON parsing to get list of stations
+    data = json.load(open("charging_stations.json"))
 
     #num_results = data["total_results"]
     #print num_results
@@ -87,10 +86,6 @@ def part1(coordinate):
     for station in min_stations:
         station.mPrint()
 
-<<<<<<< HEAD
-if __name__ == "__main__":
-    part1('38.8977 -77.0365')
-=======
->>>>>>> 546f873cdea9774d0d8d32fe96e5111168090be2
-
-part1('38.8977 -77.0365')
+#strCoor = input("Enter a coordinate: ")
+# #38.8977 -77.0365'
+#part1(strCoor)

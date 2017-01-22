@@ -57,7 +57,7 @@ class Graph:
         for station_dict in list_of_stations:
             latitude = station_dict["latitude"]
             longitude = station_dict["longitude"]
-            name = station_dict["station_name"]
+            name = station_dict["city"]
             id = station_dict["id"]
 
             # Put node into the dictionary
@@ -158,7 +158,7 @@ def part4(startstr, endstr):
     for station in path:
         station.mPrint()
         # time then distance
-#<<<<<<< HEAD
+
     print(str(output[1])+ " " + str(output[2]))
 
     return output
@@ -172,5 +172,7 @@ def part4Tuple(startTuple, endTuple):
 # MINIMIZE dist_from_curr + dist_from_end @ each station
 
 
-
-part4("37.8 -122.5", "41.7128 -76.0059")
+str1 = input("Enter start coordinate: ")
+str2 = input("Enter end coordinate: ")
+#"37.8 -122.5", "41.7128 -76.0059"
+part4(str1, str2)
