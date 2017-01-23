@@ -1,5 +1,4 @@
 import os
-import googlemaps
 from part2 import get_distance_and_time
 import urllib, json
 from haversine import haversine_func
@@ -23,7 +22,7 @@ class Node:
         print (mString)
 
     """
-    Function that takes a dictionary of points as input and returns a list of points that are within 480km
+    Function that takes a dictionary of points as input and returns the list of points that are within 480km
     Arguments:
     list_of_nodes -- the graph of nodes represented by a dictionary
     Return:
@@ -34,14 +33,17 @@ class Node:
         closePointsList = []
         for key in list_of_nodes:
             node = list_of_nodes[key]
-            if self.id  == node.id:
-                continue
-            dist = haversine_func(self.latitude, self.longitude, node.latitude, node.longitude)
 
+            # Skip over self
+            if self.id == node.id:
+                continue
+
+            dist = haversine_func(self.latitude, self.longitude, node.latitude, node.longitude)
             if dist <= 480:
                 closePointsList.append(node)
 
         return closePointsList
+
 
 """ Class that represents the graph """
 class Graph:
@@ -78,41 +80,50 @@ class Graph:
         currNode = Node(start[0], start[1], "Start", 0)
         endNode = Node(end[0], end[1], "End", 1)
 
-        # Initialize
+        # Initialize with starting node in path
         path = [currNode]
         dist = 0
         time = 0
 
         while currNode.latitude != endNode.latitude and currNode.longitude != endNode.longitude:
 
+            # Get the list of valid points from the current node
             candidates = currNode.close_points(self.list_of_nodes)
             hdist=[]
 
+            # Check if can reach destination from current node
             if haversine_func(currNode.latitude, currNode.longitude, endNode.latitude, endNode.longitude) <= 480:
-                currDist, currTime = get_distance_and_time((currNode.latitude, currNode.longitude),(endNode.latitude, endNode.longitude))
+                currDist, currTime = get_distance_and_time((currNode.latitude, currNode.longitude),
+                                                           (endNode.latitude, endNode.longitude))
                 dist += currDist
                 time += currTime
-                # Don't need to refuel at end
+                # Don't need to refuel at end so discount the refuelling time
                 #time += currDist / 480 * 20
                 break
 
+            # Greedy algorithm. Find distance from each candidate to the end then choose the node that minimizes this
             for node in candidates:
-                hdist.append(haversine_func(node.latitude,node.longitude,endNode.latitude,endNode.longitude))
-            shortest=min(hdist)
-            ind=hdist.index(shortest)
+                hdist.append(haversine_func(node.latitude, node.longitude, endNode.latitude, endNode.longitude))
 
-            winner=candidates[ind]
-            path.append(winner)
+            shortest = min(hdist)
+            ind = hdist.index(shortest)
+            chosen = candidates[ind]
+            path.append(chosen)
 
-            currDist, currTime = get_distance_and_time((currNode.latitude, currNode.longitude), (winner.latitude, winner.longitude))
+            currDist, currTime = get_distance_and_time((currNode.latitude, currNode.longitude),
+                                                       (chosen.latitude, chosen.longitude))
 
+            # Add onto running sums. Distance in kilometers, time in hours
             dist += currDist
             time += currTime
+
+            # The time to refuel at the station
+            # Car can travel 480km then must refuel for 20min to get to full charge again
             time += currDist / 480 * 20 / 60.0
 
+            currNode = chosen
 
-            currNode = candidates[ind]
-
+        # At the end, append the end node
         path.append(endNode)
         return (path, time, dist)
 
@@ -147,7 +158,7 @@ def part4(startstr, endstr):
         path.append(Node(endPoint[0], endPoint[1], "End", 1))
         for station in path:
             station.mPrint()
-
+        print (str(time) + " " + str(dist))
         return (path, time, dist)
 
     # Create the graph and find the path
@@ -155,21 +166,29 @@ def part4(startstr, endstr):
     output = g.findPath(startPoint, endPoint)
 
     path = output[0]
-
-    print("\n")
     for station in path:
         station.mPrint()
-        # time then distance
 
-    print(str(output[1])+ " " + str(output[2]))
+    # time then distance
+    print(str(output[1]) + " " + str(output[2]))
 
     return output
 
+"""
+Function called from part5.py (the UI application)
+Same as part4 but with an additional step to parse the data to a string
+"""
 def part4Tuple(startTuple, endTuple):
-    start_str = str(startTuple[0]) + " " + str(startTuple[1])
-    end_str = str(endTuple[0]) + " " + str(endTuple[1])
+    start_str = startTuple[0] + " " + startTuple[1]
+    end_str = endTuple[0] + " " + endTuple[1]
 
     return part4(start_str,end_str)
 
+# Run from command line
 if __name__ == "__main__":
-    part4("37.773972 -122.431297", "40.7128 -74.0059")
+    str1 = input("Enter start coordinate: ")
+    str2 = input("Enter end coordinate: ")
+    part4(str1, str2)
+
+
+

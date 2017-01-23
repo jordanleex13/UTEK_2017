@@ -1,7 +1,7 @@
 # Part 1: Finding a Charging Station
-
 import urllib, json
 from haversine import haversine_func
+
 """ Class to represent a station """
 class Station:
 
@@ -34,7 +34,6 @@ class Station:
         mString = str(self.latitude) + " " + str(self.longitude) + " " + self.name + " " + str(self.distance)
         print (mString)
 
-
 """
 Part 1 of UTEK
 Arguments:
@@ -43,7 +42,6 @@ Output:
 Prints 3 closest stations as output
 """
 def part1(coordinate):
-
     # Parse the coordinate string into floats
     given_lat, given_lng = map(float, coordinate.split(' '))
 
@@ -51,15 +49,13 @@ def part1(coordinate):
     # JSON parsing to get list of stations
     data = json.load(open("charging_stations.json"))
 
-    #num_results = data["total_results"]
-    #print num_results
-
+    # The total list of stations
     list_of_stations = data["fuel_stations"]
 
     # This list will contain the 3 minimum stations
     min_stations = []
 
-    # Loop through the list of stations
+    # Loop through the list of stations getting the appropriate data
     for station_dict in list_of_stations:
 
         latitude = station_dict["latitude"]
@@ -79,13 +75,13 @@ def part1(coordinate):
             if curr_station.distance < max_station.distance:
                 min_stations[index] = curr_station
 
-
     # Sort the list in place by distance
     min_stations.sort(key=lambda x: x.distance, reverse=False)
 
     for station in min_stations:
         station.mPrint()
 
-#strCoor = input("Enter a coordinate: ")
-# #38.8977 -77.0365'
-#part1(strCoor)
+# Run from command line
+if __name__  == "__main__":
+    strCoor = input("Enter a coordinate: ")
+    part1(strCoor)

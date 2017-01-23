@@ -26,9 +26,9 @@ def get_distance_and_time(point1, point2):
         c.save_cache()
         return distance/1000,duration/(60*60)
 
+# Run from command line
+if __name__ == "__main__":
+    point1 = (37.773972, -122.431297)
+    point2 = (37.4931367, -121.9453883)
 
-#test
-point1 = (37.773972, -122.431297)
-point2 = (37.4931367, -121.9453883)
-
-print(get_distance_and_time((37.773972, -122.431297), (37.4931367, -121.9453883)))
+    print(get_distance_and_time(point1, point2))

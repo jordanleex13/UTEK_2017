@@ -16,23 +16,22 @@ duration -- the time in hours
 def get_distance_and_time(point1, point2):
 
     distance_matrix = GMAPS.distance_matrix(point1,point2)
-
     element = distance_matrix["rows"][0]["elements"][0]
     distance = element["distance"]["value"]
     duration = element["duration"]["value"]
+
+    # Return distance in kilometers and time in hours
     return distance/1000,duration/(60*60)
 
-# if __name__ == "__main__":
-#     point1 = (37.771242, -122.431297)
-#     point2 = (37.4931367, -121.9453883)
-#     print(get_distance_and_time(point1, point2))
-#
-# str1 = input("Enter start coordinate: ")
-# str2 = input("Enter end coordinate: ")
-# start_lat, start_lon = map(float, str1.split(' '))
-# end_lat, end_lon = map(float, str2.split(' '))
-#
-# point1 = (start_lat, start_lon)
-# point2 = (end_lat, end_lon)
-#
-# print(get_distance_and_time(point1, point2))
+# Run from command line
+if __name__ == "__main__":
+    str1 = input("Enter start coordinate: ")
+    str2 = input("Enter end coordinate: ")
+    start_lat, start_lon = map(float, str1.split(' '))
+    end_lat, end_lon = map(float, str2.split(' '))
+
+    point1 = (start_lat, start_lon)
+    point2 = (end_lat, end_lon)
+
+    print(get_distance_and_time(point1, point2))
+
